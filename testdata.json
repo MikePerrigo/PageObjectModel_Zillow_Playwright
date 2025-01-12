@@ -2,7 +2,7 @@
     "tests": {
         "homeprice": [
             {
-                "title": "a happy path walkthrough",
+                "title": "a happy path walkthrough for home price",
                 "value": "450,000",
                 "error": "None"
             },
@@ -11,7 +11,13 @@
                 "value": "test",
                 "error": "'test' is not a valid number"
             }
+        ],
+        "down_payment": [
+            {
+                "title": "a happy path walkthrough for down payment",
+                "value": "60,000",
+                "error": "None"
+            }
         ]
-
     }
 }

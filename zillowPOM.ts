@@ -6,14 +6,22 @@ export class MortgageCalculator {
     downPayment: Locator;
     downPaymentPercent: Locator;
     interestRate: Locator;
-    homePriceError: Locator;
+    homePriceSection: Locator;
+    downPaymentSection: Locator;
+    interestRateSection: Locator;
 
     constructor(page: Page) {
         this.page = page;
-        this.homePrice = page.locator('input#homePrice');
-        this.downPayment = page.locator('input#form-1_downPayment');
-        this.downPaymentPercent = page.locator('input#form-1_downPaymentPercent');
-        this.interestRate = page.locator('input#rate');
+        // Identify all of the broad sections
+        this.homePriceSection = page.locator('label#label_1', {hasText: "Home price"}).locator('..');
+        this.downPaymentSection = page.locator('label#label_2', {hasText: "Down payment"}).locator('..');
+        this.interestRateSection = page.locator('input#rate').locator('../..');
+
+        // Identify input fields within the broad sections
+        this.homePrice = this.homePriceSection.locator('input#homePrice');
+        this.downPayment = this.downPaymentSection.locator('input#form-1_downPayment');
+        this.downPaymentPercent = this.downPaymentSection.locator('input#form-1_downPaymentPercent');
+        this.interestRate = this.interestRateSection.locator('input#rate');
     }
 
     async goto() {
@@ -30,7 +38,11 @@ export class MortgageCalculator {
         await this.page.keyboard.press('Enter')
     }
 
-    async evaluateError(error) {
-        await expect(this.page.locator('p', { hasText: error})).toBeVisible()
+    async homePriceError(error) {
+        await expect(this.homePriceSection.locator('p', { hasText: error})).toBeVisible()
+    }
+
+    async downPaymentError(error) {
+        await expect(this.downPaymentSection.locator('p', { hasText: error})).toBeVisible()
     }
 }

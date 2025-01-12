@@ -11,7 +11,19 @@ tests.homeprice.forEach(({ title, value, error }) => {
 
     // If there is an expected error present in the dataset, validate the error message.
     if(error != "None"){
-      await mtgclc.evaluateError(error)
+      await mtgclc.homePriceError(error)
     }
   });
-})
+});
+tests.down_payment.forEach(({ title, value, error }) => {
+    test(`Testing ${title}`, async ({ page }) => {
+        const mtgclc = new MortgageCalculator(page);
+        await mtgclc.goto();
+        await mtgclc.editDownPayment(value)
+        await mtgclc.editHomePrice('300000')
+
+        if(error != "None"){
+            await mtgclc.downPaymentError(error)
+          }
+    });
+});
