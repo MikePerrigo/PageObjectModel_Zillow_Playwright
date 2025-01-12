@@ -8,6 +8,8 @@ tests.homeprice.forEach(({ title, value, error }) => {
     await mtgclc.goto();
     await mtgclc.editHomePrice(value)
     await mtgclc.editDownPayment('80000')
+
+    // If there is an expected error present in the dataset, validate the error message.
     if(error != "None"){
       await mtgclc.evaluateError(error)
     }
