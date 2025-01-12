@@ -1,0 +1,17 @@
+{
+    "tests": {
+        "homeprice": [
+            {
+                "title": "a happy path walkthrough",
+                "value": "450,000",
+                "error": "None"
+            },
+            {
+                "title": "an invalid number",
+                "value": "test",
+                "error": "'test' is not a valid number"
+            }
+        ]
+
+    }
+}
