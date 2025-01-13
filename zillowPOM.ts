@@ -38,11 +38,21 @@ export class MortgageCalculator {
         await this.page.keyboard.press('Enter')
     }
 
+    async editInterestRate(rate) {
+        await this.interestRate.clear();
+        await this.interestRate.fill(rate)
+        await this.downPayment.click()
+    }
+
     async homePriceError(error) {
         await expect(this.homePriceSection.locator('p', { hasText: error})).toBeVisible()
     }
 
     async downPaymentError(error) {
         await expect(this.downPaymentSection.locator('p', { hasText: error})).toBeVisible()
+    }
+
+    async interestRateError(error) {
+        await expect(this.interestRateSection.locator('p', { hasText: error })).toBeVisible()
     }
 }

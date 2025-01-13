@@ -27,3 +27,17 @@ tests.down_payment.forEach(({ title, value, error }) => {
           }
     });
 });
+tests.interest_rate.forEach(({ title, value, error }) => {
+    test(`Testing ${title}`, async ({ page }) => {
+        const mtgclc = new MortgageCalculator(page);
+        await mtgclc.goto();
+        await mtgclc.editInterestRate(value)
+
+        if(error != "None"){
+            await mtgclc.interestRateError(error)
+          }
+        else if(error = "None"){
+            expect(mtgclc.interestRate).toHaveValue(value)
+        }
+    })
+});

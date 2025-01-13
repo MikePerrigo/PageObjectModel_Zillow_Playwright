@@ -7,7 +7,7 @@
                 "error": "None"
             },
             {
-                "title": "an invalid number",
+                "title": "an invalid home price",
                 "value": "test",
                 "error": "'test' is not a valid number"
             }
@@ -17,6 +17,23 @@
                 "title": "a happy path walkthrough for down payment",
                 "value": "60,000",
                 "error": "None"
+            },
+            {
+                "title": "an invalid down payment",
+                "value": "test",
+                "error": "'test' is not a valid number"
+            }
+        ],
+        "interest_rate": [
+            {
+                "title": "a happy path walkthrough for interest rate",
+                "value": "3.75",
+                "error": "None"
+            },
+            {
+                "title": "an invalid interest rate",
+                "value": "test",
+                "error": "'test' is not a valid number"
             }
         ]
     }
